@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Carta para ti 💗</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8d9e6;
+    font-family: "Arial", sans-serif;
+  }
+
+  .screen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease forwards;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* BOTÓN */
+  button {
+    background-color: #ff6b9d;
+    padding: 12px 25px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 25px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #ff4f82;
+  }
+
+  /* IMAGEN SOBRE */
+  .envelope {
+    width: 170px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+
+  .envelope.open {
+    transform: scale(1.2) rotateX(180deg);
+  }
+
+  /* CARTA */
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 18px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    animation: showCard 1s ease forwards;
+    overflow-y: auto;
+    max-height: 85vh;
+  }
+
+  @keyframes showCard {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  .text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #444;
+    text-align: left;
+    white-space: pre-line;
+  }
+
+  .rabbit {
+    width: 140px;
+    margin-bottom: 10px;
+    animation: float 2s infinite ease-in-out;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA 1 -->
+<div id="screen1" class="screen">
+  <img src="conejo.png" class="rabbit" alt="conejo">
+  <h2>📩 Te llegó un correo...</h2>
+  <button onclick="showEnvelope()">Abrir</button>
+</div>
+
+<!-- PANTALLA 2 -->
+<div id="screen2" class="screen hidden">
+  <h3 style="font-size:18px;">Toca el sobre para abrirlo 💌</h3>
+  <img src="sobre.png" id="envelope" class="envelope" onclick="openEnvelope()">
+</div>
+
+<!-- PANTALLA 3 -->
+<div id="screen3" class="screen hidden">
+  <div class="card">
+    <h2>Querida mocosa 💗</h2>
+    <div class="text">
+A veces me pongo a pensar en todos los momentos que hemos vivido juntos, 
+en cada risa, cada salida, cada enojo pequeñito, cada "ya me tengo que ir"
+seguido de un “te voy extrañar”.
+
+Y sabes qué? Cada día contigo vale la pena.
+Todo, absolutamente todo.
+
+Sabes, estoy orgulloso de ti.
+Se que te lo digo seguido, pero es la verdad:
+eres una chica fuerte que no se da por vencida.
+
+Sé que hay cosas que son complicadas, pero como sabes,
+nada es fácil... pero con tu esfuerzo lo lograrás.
+Vas a superar todo lo que se te ponga enfrente.
+
+No sé en qué momento pasaste de ser alguien normal,
+a ser ese alguien que me mueve el corazón sin pedir permiso.
+Ese alguien al que quiero cuidar, molestar, abrazar
+y ver crecer de la mano conmigo.
+
+Hemos pasado tiempo juntos, y aunque no sea perfecto,
+ha sido real, bonito, único y nuestro.
+
+Yo no quiero algo pasajero.
+Quiero algo que se construya con paciencia,
+con cariño, con tonterías, con avances, con errores,
+pero siempre con ganas de seguir.
+
+Gracias por cada día.
+Por cada intento.
+Por cada vez que te quedaste cuando pudiste irte.
+
+Y aunque la vida a veces se ponga pesada,
+quiero que recuerdes esto:
+
+💗 Me haces feliz.
+💗 Me encanta tu forma de ser.
+💗 Y sí, te amo más de lo que digo.
+
+Ojalá que el tiempo siga pasando…
+y al mirar atrás podamos decir:
+“Mira todo lo que construimos”.
+
+Con cariño, ternura 
+y para que recuerdes lo mucho que te amo 😆🫶 
+    </div>
+    <img src="conejo_carta.png" style="width:120px; margin-top:10px;">
+  </div>
+</div>
+
+<script>
+function showEnvelope() {
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+}
+
+function openEnvelope() {
+  const envelope = document.getElementById("envelope");
+  envelope.classList.add("open");
+
+  setTimeout(() => {
+    document.getElementById("screen2").classList.add("hidden");
+    document.getElementById("screen3").classList.remove("hidden");
+    document.body.style.overflow = "auto";
+  }, 700);
+}
+</script>
+
+</body>
+</html>
